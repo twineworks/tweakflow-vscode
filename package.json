@@ -4,7 +4,7 @@
     "description": "Syntax Highlighting",
     "version": "1.0.0",
     "icon": "icons/icon.png",
-    "publisher": "Twineworks GmbH",
+    "publisher": "twineworks",
     "license": "MIT",
     "repository": {
         "type": "git",
