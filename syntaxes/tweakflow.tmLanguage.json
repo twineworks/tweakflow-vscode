@@ -1,0 +1,202 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Tweakflow",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#heredoc-strings"
+    },
+    {
+      "include": "#vstrings"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#keys"
+    },
+    {
+      "include": "#identifiers"
+    },
+    {
+      "include": "#operators"
+    }
+  ],
+  "repository": {
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "entity.name.function.tweakflow",
+          "match": "\\b((?:[a-zA-Z_][a-zA-Z_0-9?]*)|(?:`.+?`)):"
+				},
+        {
+          "name": "variable.language.tweakflow",
+          "match": "\\b((?:[a-zA-Z_][a-zA-Z_0-9?]*)|(?:`.+?`))\\b"
+        }
+      ]
+    },
+    "keys": {
+      "patterns": [
+        {
+          "name": "constant.other.symbol.tweakflow",
+          "match": ":[-+/a-zA-Z_0-9?]+"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin": "(^[ \\t]+)?(?=#)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.tweakflow"
+            }
+          },
+          "end": "(?!\\G)",
+          "patterns": [
+            {
+              "begin": "#",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.definition.comment.tweakflow"
+                }
+              },
+              "end": "\\n",
+              "name": "comment.line.hash.tweakflow"
+            }
+          ]
+        },
+        {
+          "begin": "/\\*",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.tweakflow"
+            }
+          },
+          "end": "\\*/",
+          "name": "comment.block.c"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.tweakflow",
+          "match": "\\b(and|or|not|is|as|try|catch|throw|let|debug|typeof|default|match|for|if|then|else|library|import|alias|export|global|module|via|doc|meta|from)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.tweakflow",
+          "match": "\\b(true|false|nil|NaN|Infinity)\\b"
+        },
+        {
+          "name": "constant.numeric.datetime.tweakflow",
+          "match": "\\b[0-9]{4,9}-[0-9]{1,2}-[0-9]{1,2}T(?:[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}(?:\\.[0-9]{1,9})?(?:(?:[-+][0-9]{1,2}:[0-9]{1,2})|Z)?(?:@(?:[a-zA-Z_]+(/[a-zA-Z0-9_?]+)+)|(?:`.+?`))?)?\\b"
+        },
+        {
+          "name": "constant.numeric.binary.tweakflow",
+          "match": "\\b(0b([0-9a-fA-F]{2}|_)*)\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.tweakflow",
+          "match": "\\b0x([0-9a-fA-F][0-9a-fA-F]){1,8}\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.tweakflow",
+          "match": "\\b(?:[0-9][0-9_]*)?\\.(?:[0-9][0-9_]*)(?:[Ee][+-]?[0-9][0-9_]*)?[dD]\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.tweakflow",
+          "match": "\\b(?:[0-9][0-9_]*)(?:\\.[0-9][0-9_]*)?(?:[Ee][+-]?[0-9][0-9_]*)[dD]\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.tweakflow",
+          "match": "\\b(?:[0-9][0-9_]*)?\\.(?:[0-9][0-9_]*)(?:[Ee][+-]?[0-9][0-9_]*)?\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.tweakflow",
+          "match": "\\b(?:[0-9][0-9_]*)[dD]\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.tweakflow",
+          "match": "\\b(?:[0-9][0-9_]*)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.tweakflow",
+          "match": "\\b(string|long|double|decimal|any|void|datetime|dict|list|function|boolean|binary)\\b"
+        }
+      ]
+    },
+    "heredoc-strings": {
+      "name": "string.unquoted.heredoc.tweakflow",
+      "begin": "~~~\r?\n",
+      "end": "^~~~"
+    },
+    "vstrings": {
+      "name": "string.quoted.single.tweakflow",
+      "begin": "'",
+      "end": "'[^']",
+      "patterns": [
+        {
+          "name": "constant.character.escape.quote.tweakflow",
+          "match": "''"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.tweakflow",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.tweakflow",
+          "match": "(\\\\(t|n|r|\"|#\\{|\\|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}))+"
+        },
+        {
+          "begin": "#\\{",
+          "beginCaptures": {
+            "0": { "name": "punctuation.section.embedded.begin.tweakflow" }
+          },
+          "end": "(\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.embedded.end.ruby"
+            },
+            "1": {
+              "name": "source.tweakflow"
+            }
+          },
+          "contentName": "source.tweakflow",
+          "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+		},
+		"operators": {
+			"name": "keyword.operator",
+			"match": "[-+<>=!,/*&|^.~&]+|(::)"
+		}
+  },
+  "scopeName": "source.tweakflow"
+}

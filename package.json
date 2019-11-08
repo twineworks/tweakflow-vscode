@@ -1,0 +1,32 @@
+{
+    "name": "tweakflow",
+    "displayName": "Language Support for Tweakflow",
+    "description": "Syntax Highlighting",
+    "version": "1.0.0",
+    "icon": "icons/icon.png",
+    "publisher": "Twineworks GmbH",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/twineworks/tweakflow-vscode"
+      },
+    "engines": {
+        "vscode": "^1.40.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "tweakflow",
+            "aliases": ["Tweakflow", "tweakflow"],
+            "extensions": [".tf"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "tweakflow",
+            "scopeName": "source.tweakflow",
+            "path": "./syntaxes/tweakflow.tmLanguage.json"
+        }]
+    }
+}
