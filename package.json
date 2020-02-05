@@ -2,7 +2,7 @@
     "name": "tweakflow",
     "displayName": "Language Support for Tweakflow",
     "description": "Syntax Highlighting",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "icon": "icons/icon.png",
     "publisher": "twineworks",
     "license": "MIT",
